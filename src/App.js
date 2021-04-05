@@ -1,91 +1,34 @@
 import React from 'react';
 import './App.css';
+import {Header} from "./app/Header";
 import {
-    AppBar,
-    Button,
-    Container, Fab, fade,
-    IconButton, InputAdornment, InputBase,
-    makeStyles,
-    MuiThemeProvider,
-    TextField,
-    Toolbar, Typography
-} from '@material-ui/core'
-import {Menu, PostAdd} from '@material-ui/icons'
-import theme from "./theme"
-import {SearchBox} from "./SearchBox";
-import {ArticleCard} from "./features/articles/ArticleCard";
-import {ArticleList} from "./features/articles/ArticleList";
-
-
-const useStyles = makeStyles((theme) => ({
-        main: {
-            color: "white",
-            justify: "space-around",
-            // justifyContent: "center",
-            // alignContent: "center"
-        },
-        homeButton: {
-            color: "white",
-            padding: theme.spacing(2),
-        },
-        actionButton: {
-            position: "absolute",
-            bottom: theme.spacing(2),
-            right: theme.spacing(2),
-        },
-        title: {
-            justifyContent: "center",
-            flexGrow: 1,
-            display: 'none',
-            [theme.breakpoints.up('sm')]: {
-                display: 'block',
-            }
-
-        },
-        menuButton: {
-            marginRight: theme.spacing(2)
-        },
-
-    })
-)
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Redirect,
+} from 'react-router-dom'
 
 function App() {
-    const classes = useStyles();
 
     return (
-        // todo: refactor header to separate comp
-        // todo: add a home/main button
-        // todo: add a "New Post" button
+        <Router>
+            <Header/>
+            <Switch>
+                <Route
+                    exact
+                    path="/"
+                    render={() =>(
+                        <React.Fragment>
 
-        <MuiThemeProvider theme={theme}>
-            <Container>
-                <AppBar className={classes.main} position={"static"}>
-                    <Toolbar>
-                        <IconButton
-                            edge="start"
-                            className={classes.menuButton}
-                        >
-                            <Menu/>
-                        </IconButton>
+                        </React.Fragment>
 
-
-                        <Typography className={classes.title} variant={"h5"}>
-                            #blog
-                        </Typography>
-
-                        <Button className={classes.homeButton}>Home</Button>
-                        <SearchBox/>
-                    </Toolbar>
-                </AppBar>
-
-                <ArticleList />
+                    )}
+                />
 
 
-                <Fab className={classes.actionButton} color="primary" aria-label="add">
-                    <PostAdd />
-                </Fab>
-            </Container>
-        </MuiThemeProvider>
+
+            </Switch>
+        </Router>
     )
 }
 

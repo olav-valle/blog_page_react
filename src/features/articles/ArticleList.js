@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {Grid} from "@material-ui/core";
 import {nanoid} from "@reduxjs/toolkit";
 import {lorem} from '../articles/lorem'
 import {randomInt} from "../../app/tools";
@@ -31,32 +30,26 @@ export const ArticleList = () => {
     const [articles, setArticles] = useState([]); // todo: change to useSelector from articlesSlice
 
     useEffect(() => {
-        let n = 3 + randomInt(3)
-        let i = 0
-        let art = []
-        while (i < n) {
-            i++
-            art = art.concat([
-                {
-                    ID: nanoid(),
-                    title: lorem.generateWords(Math.floor(3 + (Math.random() * 6))),
-                    content: lorem.generateParagraphs(Math.floor(1 + (Math.random() * 3))),
-                    date: new Date().toDateString(),
-                }
-            ])
-        }
-        setArticles(art)
+            let n = 3 + randomInt(3)
+            let i = 0
+            let art = []
+            while (i < n) {
+                i++
+                art = art.concat([
+                    {
+                        ID: nanoid(),
+                        title: lorem.generateWords(Math.floor(3 + (Math.random() * 6))),
+                        content: lorem.generateParagraphs(Math.floor(1 + (Math.random() * 3))),
+                        date: new Date().toDateString(),
+                    }
+                ])
+            }
+            setArticles(art)
         }, []
     )
 
 
-    const articleList = articles.map((item) => (
-        <ArticleCard props={item}/>
-    ))
+    const articleList = articles.map((item) => {})
 
-    return (
-        <Grid container spacing={3}>
-            {articleList}
-        </Grid>
-    )
+    return (null)
 }
