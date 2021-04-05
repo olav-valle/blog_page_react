@@ -13,7 +13,8 @@ import {
 import {Menu, PostAdd} from '@material-ui/icons'
 import theme from "./theme"
 import {SearchBox} from "./SearchBox";
-import {ArticleCard} from "./ArticleCard";
+import {ArticleCard} from "./features/articles/ArticleCard";
+import {ArticleList} from "./features/articles/ArticleList";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -77,7 +78,7 @@ function App() {
                     </Toolbar>
                 </AppBar>
 
-                <ArticleCard />
+                <ArticleList />
 
 
                 <Fab className={classes.actionButton} color="primary" aria-label="add">
