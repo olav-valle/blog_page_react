@@ -7,27 +7,28 @@ import {
     Route,
     Redirect,
 } from 'react-router-dom'
+import {ArticleList} from "./features/articles/ArticleList";
+import {NewArticleForm} from "./features/articles/NewArticleForm";
 
 function App() {
 
     return (
         <Router>
             <Header/>
-            <Switch>
-                <Route
-                    exact
-                    path="/"
-                    render={() =>(
-                        <React.Fragment>
-
-                        </React.Fragment>
-
-                    )}
-                />
-
+            <div className="bg-gray-200 h-screen">
+                <Switch>
+                    <Route
+                        exact
+                        path="/"
+                        render={() => (
+                            <ArticleList/>
+                        )}
+                    />
+                    <Route exact path="/newPost" component={NewArticleForm}/>
 
 
-            </Switch>
+                </Switch>
+            </div>
         </Router>
     )
 }
