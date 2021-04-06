@@ -9,27 +9,51 @@ import {
 } from 'react-router-dom'
 import {ArticleList} from "./features/articles/ArticleList";
 import {NewArticleForm} from "./features/articles/NewArticleForm";
-import {FloatingNewButton} from "./FloatingNewButton";
+import {FloatingSaveButton, FloatingNewButton, FloatingEditButton} from "./app/FloatingActionButton";
+import {SingleArticlePage} from "./features/articles/SingleArticlePage";
 
 function App() {
 
     return (
         <Router>
             <Header/>
-            <div className="bg-gray-200 h-full">
+            <div className="">
                 <Switch>
                     <Route
                         exact
                         path="/"
                         render={() => (
-                            <ArticleList/>
+                            <React.Fragment>
+                                <ArticleList/>
+                                <FloatingNewButton/>
+                            </React.Fragment>
+
                         )}
                     />
-                    <Route exact path="/newPost" component={NewArticleForm}/>
+                    <Route
+                        exact
+                        path="/newPost"
+                        render={() => (
+                            <React.Fragment>
+                                <NewArticleForm/>
+                                <FloatingSaveButton/>
+                            </React.Fragment>
+                        )}
+                    />
+                    <Route exact
+                           path="/posts/:artId"
+                           render={({match}) => (
+                               <React.Fragment>
+                               <SingleArticlePage props={match}/>
+                               <FloatingEditButton/>
+                               </React.Fragment>
+                           )
+                           }
+
+                    />
 
 
                 </Switch>
-                    <FloatingNewButton />
             </div>
         </Router>
     )

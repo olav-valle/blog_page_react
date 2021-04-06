@@ -2,6 +2,9 @@ import React, {useEffect, useState} from "react";
 import {ArticleCard} from "./ArticleCard";
 import {fetchArticles, selectAllPosts} from "./articlesSlice";
 import {useDispatch, useSelector} from "react-redux";
+import ContentLoader from "react-content-loader";
+import {LoadingPlaceholder} from "./LoadingPlaceholder";
+
 
 
 export const ArticleList = () => {
@@ -22,7 +25,12 @@ export const ArticleList = () => {
     let articleList;
     // todo: any better to make this a switch?
     if (status === 'pending') {
-        articleList = <div>Loading articles...</div>
+
+        articleList = [
+            <LoadingPlaceholder/>,
+            <LoadingPlaceholder/>,
+            <LoadingPlaceholder/>,
+            ]
     } else if (status === 'fulfilled') {
         const ordered = articles.slice().sort((a, b) =>
             b.date.localeCompare(a.date));

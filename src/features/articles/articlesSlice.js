@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, nanoid} from '@reduxjs/toolkit';
-import randomArticles from "./randomArticles";
+import randomArticles from "../../app/randomArticles";
 
 
 const initialArts = [
