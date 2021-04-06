@@ -5,7 +5,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Redirect,
+    Redirect, Link,
 } from 'react-router-dom'
 import {ArticleList} from "./features/articles/ArticleList";
 import {NewArticleForm} from "./features/articles/NewArticleForm";
@@ -25,7 +25,9 @@ function App() {
                         render={() => (
                             <React.Fragment>
                                 <ArticleList/>
-                                <FloatingNewButton/>
+                                <Link to={"/newPost"}>
+                                    <FloatingNewButton/>
+                                </Link>
                             </React.Fragment>
 
                         )}
@@ -36,7 +38,6 @@ function App() {
                         render={() => (
                             <React.Fragment>
                                 <NewArticleForm/>
-                                <FloatingSaveButton/>
                             </React.Fragment>
                         )}
                     />
@@ -45,7 +46,6 @@ function App() {
                            render={({match}) => (
                                <React.Fragment>
                                <SingleArticlePage props={match}/>
-                               <FloatingEditButton/>
                                </React.Fragment>
                            )
                            }

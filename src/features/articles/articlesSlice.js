@@ -1,5 +1,8 @@
 import {createAsyncThunk, createSlice, nanoid} from '@reduxjs/toolkit';
 import randomArticles from "../../app/randomArticles";
+import sub from "date-fns/sub";
+import {randomInt} from "../../app/tools";
+import {lorem} from "../../app/lorem";
 
 
 const initialArts = [
@@ -39,7 +42,26 @@ export const fetchArticles = createAsyncThunk(
 const articleSlice = createSlice({
     name: 'articles',
     initialState,
-    reducers: {},
+    reducers: {
+        articleAdded: {
+
+            reducer(state, action) {
+                state.arts.push(action.payload)
+            },
+
+            prepare(title, content) {
+                return{
+                    payload: {
+                        id: nanoid(),
+                        date: new Date().toISOString(),
+                        title,
+                        content
+                    }
+                }
+            }
+
+        }
+    },
     extraReducers: {
         [fetchArticles.pending]: (state, action) => {
             state.status = 'pending';
@@ -55,7 +77,7 @@ const articleSlice = createSlice({
     }
 });
 
-export const {} = articleSlice.actions;
+export const {articleAdded} = articleSlice.actions;
 
 export default articleSlice.reducer;
 

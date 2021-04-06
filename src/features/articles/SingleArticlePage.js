@@ -4,6 +4,7 @@ import {selectArticleById} from "./articlesSlice";
 import {ArticleDate} from "./ArticleDate";
 import {Redirect, Route, Switch} from "react-router-dom";
 import {NotFound} from './NotFoundPage'
+import {FloatingEditButton} from "../../app/FloatingActionButton";
 
 export const SingleArticlePage = (match) => {
     const artId = match.props.params.artId;
@@ -17,6 +18,7 @@ export const SingleArticlePage = (match) => {
                 <div className="capitalize text-xl font-bold ">{article.title}</div>
                 <div className="text-blue-800 text-xs"><ArticleDate date={article.date}/></div>
                 <p className="">{article.content}</p>
+                <FloatingEditButton/>
             </div>
         )
     }

@@ -42,7 +42,7 @@ export const ArticleList = () => {
     }
 
 return (
-    <div className="flex flex-col p-5 pt-20 space-y-5 ">
+    <div className="m-auto flex flex-col justify-center p-auto pt-20 space-y-5 lg:max-w-screen-lg">
         {articleList}
     </div>
 )
