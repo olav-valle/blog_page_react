@@ -25,7 +25,7 @@ export const NewArticleForm = () => {
             <div className="flex flex-col">
                 <label className="capitalize text-xl font-bold " htmlFor="articleTitle">Title:</label>
                 <input
-                    className="rounded-md focus:shadow-inner p-3 outline-none  borderw-1/2"
+                    className="rounded-md focus:shadow-inner p-3 outline-none  border w-full"
                     type="text"
                     id="articleTitle"
                     name="articleTitle"
@@ -47,7 +47,7 @@ export const NewArticleForm = () => {
 
                 /></div>
             </div>
-            <FloatingSaveButton onClick={onArticleSaveClick()}/>
+            <button onClick={onArticleSaveClick}><FloatingSaveButton /></button>
         </div>
     )
 

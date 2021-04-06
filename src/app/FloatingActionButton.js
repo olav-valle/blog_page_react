@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 const FloatingButton = (props) => {
     const {color, icon} = props;
     return (
-        <button
+        <div
             className={`
                 ${color}
                 bg-
@@ -17,7 +17,7 @@ const FloatingButton = (props) => {
                 `}
         >
             <i className={`${icon}`}/>
-        </button>
+        </div>
     );
 }
 
