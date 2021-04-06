@@ -10,7 +10,7 @@ export const ArticleDate = ({date}) => {
 
     return (
         <span title={date}>
-            <i>{`${timeAgo}`}</i>
+            <i>{`${timeAgo} ago`}</i>
         </span>
     )
 
