@@ -27,14 +27,14 @@ export const ArticleList = () => {
         const ordered = articles.slice().sort((a, b) =>
             b.date.localeCompare(a.date));
         articleList = ordered.map(item => (
-            <ArticleCard props={item}/>
+            <ArticleCard key={item.id} props={item}/>
         ))
     } else if ( status === 'rejected') {
         articleList = <div>Error loading articles...</div>
     }
 
 return (
-    <div className="flex flex-col p-5 space-y-5 ">
+    <div className="flex flex-col p-5 pt-20 space-y-5 ">
         {articleList}
     </div>
 )

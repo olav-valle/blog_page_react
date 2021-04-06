@@ -9,13 +9,14 @@ import {
 } from 'react-router-dom'
 import {ArticleList} from "./features/articles/ArticleList";
 import {NewArticleForm} from "./features/articles/NewArticleForm";
+import {FloatingNewButton} from "./FloatingNewButton";
 
 function App() {
 
     return (
         <Router>
             <Header/>
-            <div className="bg-gray-200 h-screen">
+            <div className="bg-gray-200 h-full">
                 <Switch>
                     <Route
                         exact
@@ -28,6 +29,7 @@ function App() {
 
 
                 </Switch>
+                    <FloatingNewButton />
             </div>
         </Router>
     )

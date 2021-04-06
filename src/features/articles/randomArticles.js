@@ -4,7 +4,7 @@ import {lorem} from "./lorem";
 import sub from 'date-fns/sub';
 
 const articles = () => {
-    let n = 3 + randomInt(3)
+    let n = 10 + randomInt(5)
     let i = 0
     let art = [];
     while (i < n) {
@@ -23,7 +23,8 @@ const articles = () => {
 
 function randomArticles() {
 
-    let timeout = 100 + randomInt(5000)
+    const timeOffset = 0
+    let timeout = 100 + randomInt(timeOffset)
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(articles());
