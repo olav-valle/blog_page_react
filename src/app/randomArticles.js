@@ -21,7 +21,7 @@ const articles = () => {
     return art;
 }
 
-function randomArticles() {
+async function randomArticles() {
 
     const timeOffset = 5000
     let timeout = 100 + randomInt(timeOffset)

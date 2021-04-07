@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {ArticleCard} from "./ArticleCard";
 import {fetchArticles, selectAllPosts} from "./articlesSlice";
 import {useDispatch, useSelector} from "react-redux";
-import ContentLoader from "react-content-loader";
 import {LoadingPlaceholder} from "./LoadingPlaceholder";
 
 

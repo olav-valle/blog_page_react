@@ -2,8 +2,7 @@ import React from "react";
 import {useSelector} from "react-redux";
 import {selectArticleById} from "./articlesSlice";
 import {ArticleDate} from "./ArticleDate";
-import {Redirect, Route, Switch} from "react-router-dom";
-import {NotFound} from './NotFoundPage'
+import {NotFound} from '../../app/NotFoundPage'
 import {FloatingEditButton} from "../../app/FloatingActionButton";
 
 export const SingleArticlePage = (match) => {
