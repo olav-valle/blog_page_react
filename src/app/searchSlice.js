@@ -20,10 +20,13 @@ const searchSlice = createSlice( {
                     },
                 }
             }
-        }
+        },
     }
 
 })
 export const {searchWasEntered} = searchSlice.actions;
 
 export default searchSlice.reducer;
+
+export const selectSearchString = state => state.search.searchString;
+

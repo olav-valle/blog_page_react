@@ -24,10 +24,12 @@ module.exports = {
     },
     variants: {
         extend: {
+
             boxShadow: ['active'],
             backgroundColor: ['active'],
             visibility: ['active', 'focus'],
             textColor: ['active'],
+            placeholderColor: ['hover', 'group-hover'],
         },
     },
     plugins: [],
