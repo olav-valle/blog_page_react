@@ -11,8 +11,7 @@ const initialState = {
 export const fetchArticles = createAsyncThunk(
     'articles/fetchAll',
     async () => {
-        const response = await randomArticles();
-        return response;
+        return await randomArticles();
     })
 
 const articleSlice = createSlice({
@@ -26,7 +25,7 @@ const articleSlice = createSlice({
             },
 
             prepare(title, content) {
-                return{
+                return {
                     payload: {
                         id: nanoid(),
                         date: new Date().toISOString(),
@@ -37,9 +36,20 @@ const articleSlice = createSlice({
             }
 
         },
-        articleEdited: {
 
-        }
+        articleDeleted: {
+            reducer(state, action) {
+                state.arts = state.arts.filter(art => art.id !== action.payload.id)
+            },
+            prepare(id) {
+                return {
+                    payload: {
+                        id
+                    }
+                }
+            }
+        },
+        articleEdited: {}
     },
     extraReducers: {
         [fetchArticles.pending]: (state, action) => {
@@ -56,7 +66,7 @@ const articleSlice = createSlice({
     }
 });
 
-export const {articleAdded} = articleSlice.actions;
+export const {articleAdded, articleDeleted} = articleSlice.actions;
 
 export default articleSlice.reducer;
 

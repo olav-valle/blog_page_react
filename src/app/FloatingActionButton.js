@@ -41,11 +41,11 @@ export const FloatingSaveButton = () => {
     )
 }
 
-export const FloatingEditButton = () => {
+export const FloatingDeleteButton = () => {
     return (
         <FloatingButton
             color="bg-red-300 active:bg-red-400"
-            icon="zmdi zmdi-edit zmdi-hc-4x"
+            icon="zmdi zmdi-delete zmdi-hc-4x"
         />
     )
 }
