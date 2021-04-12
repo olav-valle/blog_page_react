@@ -1,15 +1,10 @@
 import React from 'react';
 import './App.css';
 import {Header} from "./app/Header";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Redirect, Link,
-} from 'react-router-dom'
+import {BrowserRouter as Router, Link, Route, Switch,} from 'react-router-dom'
 import {ArticleList} from "./features/articles/ArticleList";
 import {NewArticleForm} from "./features/articles/NewArticleForm";
-import {FloatingSaveButton, FloatingNewButton, FloatingEditButton} from "./app/FloatingActionButton";
+import {FloatingNewButton} from "./app/FloatingActionButton";
 import {SingleArticlePage} from "./features/articles/SingleArticlePage";
 
 function App() {

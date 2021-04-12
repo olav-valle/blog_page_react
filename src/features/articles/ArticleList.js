@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {ArticleCard} from "./ArticleCard";
 import {fetchArticles, selectAllPosts} from "./articlesSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {LoadingPlaceholder} from "./LoadingPlaceholder";
-
 
 
 export const ArticleList = () => {
@@ -26,9 +25,9 @@ export const ArticleList = () => {
     if (status === 'pending') {
 
         articleList = [
-            <LoadingPlaceholder/>,
-            <LoadingPlaceholder/>,
-            <LoadingPlaceholder/>,
+            <LoadingPlaceholder key={"1"}/>,
+            <LoadingPlaceholder key={"2"}/>,
+            <LoadingPlaceholder key={"3"}/>,
             ]
     } else if (status === 'fulfilled') {
         const ordered = articles.slice().sort((a, b) =>
