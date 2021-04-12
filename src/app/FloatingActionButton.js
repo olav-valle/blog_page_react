@@ -7,6 +7,7 @@ const FloatingButton = (props) => {
     return (
         <div
             className={`
+                group
                 rounded-full h-20 w-20
                 fixed right-10 bottom-10
                 shadow-FAB
@@ -15,7 +16,7 @@ const FloatingButton = (props) => {
                 ${color}
                 `}
         >
-            <i className={`${icon}`}/>
+            <i className={`${icon} hover-hover:group-hover:text-gray-600`}/>
         </div>
     );
 }
@@ -29,6 +30,7 @@ export const FloatingNewButton = () => {
         />
     )
 }
+
 
 export const FloatingSaveButton = () => {
     return (

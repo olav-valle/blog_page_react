@@ -1,11 +1,17 @@
 import React from "react";
 import {ArticleDate} from "./ArticleDate";
-import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 export const ArticleCard = ({props}) => {
     const article = props;
+
+    const history = useHistory();
+
+    const goToArticlePage = () => {
+        history.push(`/posts/${article.id}`);
+    }
     return (
-        <Link to={`/posts/${article.id}`} className="">
+        <div>
         <article
             className="
             shadow-lg
@@ -19,13 +25,15 @@ export const ArticleCard = ({props}) => {
             key={article.id}
         >
             <div className="text-blue-800 text-xs"><ArticleDate date={article.date}/></div>
-            <div className="capitalize text-xl font-bold ">{article.title}</div>
+            <div onClick={goToArticlePage} className="cursor-pointer capitalize text-xl font-bold hover-hover:hover:text-blue-500">{article.title}</div>
             <p className="post-content truncate">{article.content}</p>
-            <button className="button muted-button">
+            <button
+                onClick={goToArticlePage}
+                className="button muted-button hover-hover:hover:text-blue-500">
                 View Post
             </button>
         </article>
-        </Link>
+        </div>
     )
 
 
