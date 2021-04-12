@@ -26,6 +26,8 @@ module.exports = {
         extend: {
             boxShadow: ['active'],
             backgroundColor: ['active'],
+            visibility: ['active', 'focus'],
+            textColor: ['active'],
         },
     },
     plugins: [],
