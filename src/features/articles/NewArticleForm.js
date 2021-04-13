@@ -2,22 +2,26 @@ import React, {useState} from "react";
 import {FloatingSaveButton} from "../../app/FloatingActionButton";
 import {useDispatch} from "react-redux";
 import {articleAdded} from "./articlesSlice";
+import { useHistory } from 'react-router-dom'
+import {nanoid} from "@reduxjs/toolkit";
 
 export const NewArticleForm = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
-    const dispatch  = useDispatch()
-
+    const dispatch  = useDispatch();
+    const history = useHistory();
     const onTitleChange = e => setTitle(e.target.value);
     const onContentChange = e => setContent(e.target.value);
 
     const onArticleSaveClick = () => {
+        let id = nanoid();
         if (title && content) {
-            dispatch(articleAdded(title, content));
+            dispatch(articleAdded(title, content, id));
             setTitle("");
             setContent("");
         }
+        history.push(`/posts/${id}`)
     }
 
     return (

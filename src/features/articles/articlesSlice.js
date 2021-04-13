@@ -24,10 +24,10 @@ const articleSlice = createSlice({
                 state.arts.push(action.payload)
             },
 
-            prepare(title, content) {
+            prepare(title, content, id) {
                 return {
                     payload: {
-                        id: nanoid(),
+                        id: id,
                         date: new Date().toISOString(),
                         title,
                         content
