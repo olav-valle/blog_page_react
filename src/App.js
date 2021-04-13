@@ -37,10 +37,20 @@ function App() {
                         path="/newPost"
                         render={() => (
                             <React.Fragment>
-                                <NewArticleForm/>
+                                <NewArticleForm />
                             </React.Fragment>
                         )}
                     />
+                    <Route
+                        exact
+                        path="/editPost/:artId"
+                        render={({match}) => (
+                            <React.Fragment>
+                                <NewArticleForm props={match}/>
+                            </React.Fragment>
+                        )}
+                    />
+
                     <Route exact
                            path="/posts/:artId"
                            render={({match}) => (

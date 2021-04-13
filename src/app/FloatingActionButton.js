@@ -49,3 +49,12 @@ export const FloatingDeleteButton = () => {
         />
     )
 }
+
+export const FloatingEditButton = () => {
+    return (
+        <FloatingButton
+            color="bg-red-300 activate:bg-red-400"
+            icon="zmdi zmdi-edit zmdi-hc-4x"
+        />
+    )
+}

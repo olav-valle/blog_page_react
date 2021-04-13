@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {articleDeleted, selectArticleById} from "./articlesSlice";
 import {ArticleDate} from "./ArticleDate";
 import {NotFound} from '../../app/NotFoundPage'
-import {FloatingDeleteButton} from "../../app/FloatingActionButton";
+import {FloatingEditButton} from "../../app/FloatingActionButton";
 import {useHistory} from "react-router-dom";
 
 export const SingleArticlePage = (match) => {
@@ -12,11 +12,11 @@ export const SingleArticlePage = (match) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const onDeleteArticleClick = () => {
-        dispatch(articleDeleted(artId))
-        history.push("/")
-    }
 
+
+    const onEditArticleClick = () => {
+        history.push(`/editPost/${artId}`)
+    }
     const article = useSelector(state =>
         selectArticleById(state, artId));
 
@@ -26,7 +26,7 @@ export const SingleArticlePage = (match) => {
                 <div className="capitalize text-xl font-bold ">{article.title}</div>
                 <div className="text-blue-800 text-xs"><ArticleDate date={article.date}/></div>
                 <p className="">{article.content}</p>
-                <button onClick={onDeleteArticleClick}><FloatingDeleteButton/></button>
+                <button onClick={onEditArticleClick}><FloatingEditButton/></button>
             </div>
         )
     }

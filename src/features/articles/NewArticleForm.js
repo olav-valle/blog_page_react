@@ -1,27 +1,62 @@
 import React, {useState} from "react";
 import {FloatingSaveButton} from "../../app/FloatingActionButton";
-import {useDispatch} from "react-redux";
-import {articleAdded} from "./articlesSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {articleAdded, articleDeleted, selectArticleById} from "./articlesSlice";
 import { useHistory } from 'react-router-dom'
 import {nanoid} from "@reduxjs/toolkit";
 
-export const NewArticleForm = () => {
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+export const NewArticleForm = (match) => {
+    let initialTitle = "";
+    let initialContent = "";
+    let artId = ""
+    if (match.props)  artId = match.props.params.artId;
+
+    const article = useSelector(state =>
+        selectArticleById(state, artId));
+
+    if (article) {
+        initialTitle = article.title;
+        initialContent = article.content;
+    }
+
+    const [title, setTitle] = useState(initialTitle);
+    const [content, setContent] = useState(initialContent);
+
+
+
+
+
 
     const dispatch  = useDispatch();
     const history = useHistory();
+
     const onTitleChange = e => setTitle(e.target.value);
     const onContentChange = e => setContent(e.target.value);
 
+    // Dispatches article data to store, including a generated nanoid.
     const onArticleSaveClick = () => {
         let id = nanoid();
+        // Is generating ID locally a bad idea? It's the easiest way to retrieve
+        //  the ID for use in the history.push url, but could it somehow be abused to
+        //  exploit the backend DB?
+        //  Perhaps just a security check in the backend will be enough.
+
         if (title && content) {
             dispatch(articleAdded(title, content, id));
             setTitle("");
             setContent("");
         }
         history.push(`/posts/${id}`)
+    }
+
+    // Deletes the current article.
+    const onDeleteArticleClick = () => {
+        dispatch(articleDeleted(artId))
+        history.push("/")
+    }
+    let deleteButtonVisible = "hidden"
+    if (article) {
+        deleteButtonVisible = ""
     }
 
     return (
@@ -47,10 +82,13 @@ export const NewArticleForm = () => {
                     name="articleContent"
                     value={content}
                     onChange={onContentChange}
-                    //placeholder="What's on your mind..?"
 
-                /></div>
+                    />
+                </div>
             </div>
+                <button
+                    className={`mt-3 p-2 bg-red-500 rounded-md w-2/5 ${deleteButtonVisible}`}
+                    onClick={onDeleteArticleClick}>Delete Post</button>
             <button onClick={onArticleSaveClick}><FloatingSaveButton /></button>
         </div>
     )

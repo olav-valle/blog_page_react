@@ -23,7 +23,7 @@ const articles = () => {
 
 async function randomArticles() {
 
-    const timeOffset = 5000
+    const timeOffset = 0
     let timeout = 100 + randomInt(timeOffset)
     return new Promise((resolve, reject) => {
         setTimeout(() => {
