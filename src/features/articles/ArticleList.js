@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {ArticleCard} from "./ArticleCard";
-import {fetchArticles, selectAllPosts} from "./articlesSlice";
+import {fetchArticles, selectAllPosts, selectArticleStatus} from "./articlesSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {LoadingPlaceholder} from "./LoadingPlaceholder";
 import {selectSearchString} from "../../app/searchSlice";
@@ -18,7 +18,7 @@ export const ArticleList = ({props}) => {
 
     const {searchString} = useSelector(selectSearchString); // User search input
 
-    const status = useSelector(state => state.articles.status) // Are articles loaded?
+    const status = useSelector(selectArticleStatus) // Are articles loaded?
 
     // Fetch articles if article store is 'idle', i.e. "not loaded yet".
     useEffect(() => {

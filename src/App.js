@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
 import {Header} from "./app/Header";
 import {BrowserRouter as Router, Route, Switch,} from 'react-router-dom'
 import {ArticleList} from "./features/articles/ArticleList";
 import {NewArticleForm} from "./features/articles/NewArticleForm";
 import {SingleArticlePage} from "./features/articles/SingleArticlePage";
+import { NotFound } from "./app/NotFoundPage";
 
 function App() {
 
@@ -61,6 +61,8 @@ function App() {
                            }
 
                     />
+
+                    <Route component={NotFound}/>
 
 
                 </Switch>

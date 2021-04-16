@@ -6,8 +6,10 @@ export const NotFound = () => {
             <div className="h-10 capitalize  text-2xl font-bold">404</div>
             <div className="h-10 capitalize  text-xl leading-5">Page not Found</div>
             <div>I have no idea what you are talking about</div>
-            <img src="https://i.kym-cdn.com/photos/images/original/000/411/080/c7b.jpg"
-                 alt="Oolong the Pancake Bunny"/>
+            <img
+                className="w-80 m-auto"
+                src="https://i.kym-cdn.com/photos/images/original/000/411/080/c7b.jpg"
+                alt="Oolong the Pancake Bunny"/>
             <div>So here's a bunny with a pancake on its head.</div>
         </div>
     )

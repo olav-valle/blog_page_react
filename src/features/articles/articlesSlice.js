@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, nanoid} from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import randomArticles from "../../app/randomArticles";
 
 const initialState = {
@@ -8,9 +8,9 @@ const initialState = {
 
 // Fake-fetches articles from the "API"
 //todo: implement real API?
-export const fetchArticles = createAsyncThunk(
+const asyncFetchArticles = createAsyncThunk(
     'articles/fetchAll',
-    async () => {
+    async (arg, thunkAPI) => {
         return await randomArticles();
     })
 
@@ -52,14 +52,14 @@ const articleSlice = createSlice({
         articleEdited: {}
     },
     extraReducers: {
-        [fetchArticles.pending]: (state, action) => {
+        [asyncFetchArticles.pending]: (state) => {
             state.status = 'pending';
         },
-        [fetchArticles.fulfilled]: (state, action) => {
+        [asyncFetchArticles.fulfilled]: (state, action) => {
             state.status = 'fulfilled';
             state.arts = state.arts.concat(action.payload);
         },
-        [fetchArticles.rejected]: (state, action) => {
+        [asyncFetchArticles.rejected]: (state) => {
             state.status = 'rejected';
         }
 
@@ -74,3 +74,6 @@ export const selectArticleById = (state, artId) => state.articles.arts.find(art 
 
 export const selectAllPosts = state => state.articles.arts;
 
+export const selectArticleStatus = state => state.articles.status;
+
+export const fetchArticles = asyncFetchArticles();

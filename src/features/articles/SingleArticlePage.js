@@ -1,6 +1,6 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {articleDeleted, selectArticleById} from "./articlesSlice";
+import {useSelector} from "react-redux";
+import {selectArticleById} from "./articlesSlice";
 import {ArticleDate} from "./ArticleDate";
 import {NotFound} from '../../app/NotFoundPage'
 import {FloatingEditButton} from "../../app/FloatingActionButton";
@@ -9,7 +9,6 @@ import {useHistory} from "react-router-dom";
 export const SingleArticlePage = (match) => {
     const artId = match.props.params.artId;
 
-    const dispatch = useDispatch();
     const history = useHistory();
 
 
